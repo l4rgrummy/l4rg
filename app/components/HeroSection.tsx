@@ -7,7 +7,7 @@ export default function HeroSection() {
             Guaranteed Delivery • Transparent Reporting
           </span>
           <h1 className="text-4xl font-bold">
-            We Book Qualified B2B Appointments & Generate Leads — Predictably
+            I Book Qualified B2B Appointments & Generate Leads — Predictably
           </h1>
           <p className="sub">
             SDR-as-a-Service powered by human expertise, verified data, and
