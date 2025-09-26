@@ -1,0 +1,140 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle, Target, Users } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+function Container({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={cn("mx-auto w-full max-w-6xl px-4 md:px-6", className)}>
+      {children}
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative py-12 md:py-20 bg-background bg-[radial-gradient(1200px_600px_at_20%_-10%,rgba(59,130,246,0.08),transparent)]">
+      <Container className="grid gap-10 md:grid-cols-2 md:items-center">
+        <div className="space-y-4">
+          <p className="text-xs uppercase tracking-wide text-muted-foreground">
+            B2B Prospecting Data
+          </p>
+          <h1 className="text-pretty text-3xl md:text-5xl font-bold text-foreground">
+            High-quality B2B data for smarter outreach
+          </h1>
+          <p className="text-muted-foreground max-w-prose">
+            Company and contact datasets curated for accuracy, relevance, and
+            compliance—built to power outbound, ABM, and revenue operations.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Button asChild variant="outline">
+              <Link href="#contact">Request Sample</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="#contact">Talk to Data Specialist</Link>
+            </Button>
+          </div>
+        </div>
+        <div className="relative aspect-video overflow-hidden rounded-xl border bg-muted">
+          <Image
+            src={"/crm-software-hero.png"}
+            alt="B2B data"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function Highlights() {
+  const items = [
+    {
+      title: "Verified Contacts",
+      desc: "Human-verified decision maker data with emails and phones",
+      icon: CheckCircle,
+    },
+    {
+      title: "Firmographic Filters",
+      desc: "Industry, size, revenue, tech stack and hiring signals",
+      icon: Target,
+    },
+    {
+      title: "ICP Precision",
+      desc: "Audience definitions aligned to your ideal customer profile",
+      icon: Users,
+    },
+  ];
+  return (
+    <section className="py-16 bg-secondary/50">
+      <Container>
+        <div className="text-center mb-12">
+          <p className="text-xs uppercase tracking-wide text-muted-foreground">
+            What You Get
+          </p>
+          <h2 className="mt-2 text-2xl md:text-3xl font-semibold text-pretty">
+            Clean, compliant, sales-ready data
+          </h2>
+        </div>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {items.map((it, i) => (
+            <Card key={i}>
+              <CardContent className="p-6">
+                <div className="flex items-start gap-3">
+                  <it.icon className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold mb-2">{it.title}</h3>
+                    <p className="text-sm text-muted-foreground">{it.desc}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function CTA() {
+  return (
+    <section
+      className="py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
+      id="contact"
+    >
+      <Container className="text-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          Need a targeted B2B list?
+        </h2>
+        <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+          Get a complimentary sample tailored to your ICP and campaign goals.
+        </p>
+        <Button asChild size="lg" variant="secondary">
+          <Link href="/contact">Request a Sample</Link>
+        </Button>
+      </Container>
+    </section>
+  );
+}
+
+export default function B2BDataPage() {
+  return (
+    <main>
+      <Hero />
+      <Highlights />
+      <CTA />
+    </main>
+  );
+}
