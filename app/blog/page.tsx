@@ -76,8 +76,35 @@ export default async function BlogIndexPage({
 }) {
   const resolvedSearchParams = await searchParams;
   const posts = sortPostsByDateDescending(allPosts);
+  // Ensure required/default tags are available even if not yet used by any post
+  const defaultTags = [
+    "Appointment Setting",
+    "IT Support",
+    "Sales Development",
+    "Go-To-Market",
+    "Data Solutions",
+    "Industries",
+    "Google PPC",
+    "Bing Ads",
+    "Social Media Marketing",
+    "Digital Marketing",
+    "Web Development",
+    "App Development",
+    // Services from header → Services menu
+    "Tech Support Services",
+    "LinkedIn Marketing Services",
+    "Facebook Marketing Services",
+    "Instagram Marketing Services",
+    "Tiktok Marketing",
+    "Snapchat Marketing",
+    "Twitter Marketing",
+    "Pinterest Marketing",
+    "Reddit Marketing",
+    "Web Development Services",
+    "App Development Services",
+  ];
   const allTags = Array.from(
-    new Set(posts.flatMap((post) => post.tags))
+    new Set([...posts.flatMap((post) => post.tags), ...defaultTags])
   ).sort();
   const rawTagParam = Array.isArray(resolvedSearchParams?.tags)
     ? resolvedSearchParams?.tags.join(",")
