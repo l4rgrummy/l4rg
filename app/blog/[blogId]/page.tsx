@@ -168,14 +168,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
         </div>
         <aside className="hidden lg:block">
           <div className="sticky top-24">
-            <h2 className="text-base font-semibold mb-3">Tags</h2>
+            <h2 className="text-base font-semibold mb-3">Categories</h2>
             <div className="flex flex-wrap gap-2">
               {allTags.map((t) => (
                 <Link
                   key={t}
                   href={`/tag/${slugifyTag(t)}`}
                   className="inline-flex"
-                  aria-label={`View posts tagged ${t}`}
+                  aria-label={`View posts in category ${t}`}
                 >
                   <Badge variant="outline" className="cursor-pointer">
                     {t}
