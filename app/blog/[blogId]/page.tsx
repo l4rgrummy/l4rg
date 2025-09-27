@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 import { posts as allPosts, formatIsoDate } from "@/lib/blog/posts";
+import { getAllTags, slugifyTag } from "@/lib/blog/tags";
 import { Streamdown } from "streamdown";
 
 export const dynamic = "force-static";
@@ -108,51 +109,82 @@ export default async function BlogDetailPage({ params }: PageProps) {
   if (!post) return notFound();
   const content =
     typeof post.content === "string" ? normalizeMarkdown(post.content) : "";
+  const allTags = getAllTags(allPosts);
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
-      {post.image?.src && (
-        <div className="relative mb-8 aspect-[3/2] w-full overflow-hidden rounded-xl border border-muted/50">
-          <Image
-            src={post.image.src}
-            alt={post.image.alt || post.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-            priority
-          />
-        </div>
-      )}
-      <div className="mb-6">
-        <Link href="/blog" className="text-sm text-primary hover:underline">
-          ← Back to all posts
-        </Link>
-      </div>
-      <article className="prose dark:prose-invert max-w-none">
-        <h1 className="mb-3 text-3xl font-semibold">{post.title}</h1>
-        <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-          <span className="tabular-nums">{formatIsoDate(post.date)}</span>
-          <span>•</span>
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((t) => (
-              <Badge key={t} variant="secondary">
-                {t}
-              </Badge>
-            ))}
+    <main className="mx-auto w-full max-w-6xl px-4 md:px-6 py-12">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_280px] items-start">
+        <div>
+          {post.image?.src && (
+            <div className="relative mb-8 aspect-[3/2] w-full overflow-hidden rounded-xl border border-muted/50">
+              <Image
+                src={post.image.src}
+                alt={post.image.alt || post.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                unoptimized
+                priority
+              />
+            </div>
+          )}
+          <div className="mb-6">
+            <Link href="/blog" className="text-sm text-primary hover:underline">
+              ← Back to all posts
+            </Link>
+          </div>
+          <article className="prose dark:prose-invert max-w-none">
+            <h1 className="mb-3 text-3xl font-semibold">{post.title}</h1>
+            <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+              <span className="tabular-nums">{formatIsoDate(post.date)}</span>
+              <span>•</span>
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((t) => (
+                  <Link
+                    key={t}
+                    href={`/tag/${slugifyTag(t)}`}
+                    aria-label={`View posts tagged ${t}`}
+                  >
+                    <Badge variant="secondary" className="cursor-pointer">
+                      {t}
+                    </Badge>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Card className="border-muted/50">
+              <CardContent>
+                <Streamdown>{content}</Streamdown>
+              </CardContent>
+            </Card>
+          </article>
+
+          <div className="mt-10">
+            <Link href="/b2b-lead-generation">
+              <Button size="lg">Book a strategy call</Button>
+            </Link>
           </div>
         </div>
-
-        <Card className="border-muted/50">
-          <CardContent>
-            <Streamdown>{content}</Streamdown>
-          </CardContent>
-        </Card>
-      </article>
-
-      <div className="mt-10">
-        <Link href="/b2b-lead-generation">
-          <Button size="lg">Book a strategy call</Button>
-        </Link>
+        <aside className="hidden lg:block">
+          <div className="sticky top-24">
+            <h2 className="text-base font-semibold mb-3">Tags</h2>
+            <div className="flex flex-wrap gap-2">
+              {allTags.map((t) => (
+                <Link
+                  key={t}
+                  href={`/tag/${slugifyTag(t)}`}
+                  className="inline-flex"
+                  aria-label={`View posts tagged ${t}`}
+                >
+                  <Badge variant="outline" className="cursor-pointer">
+                    {t}
+                  </Badge>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </aside>
       </div>
     </main>
   );

@@ -14,6 +14,7 @@ import {
   sortPostsByDateDescending,
   getRelativeTimeFromNow,
 } from "@/lib/blog/posts";
+import { slugifyTag, getAllTags } from "@/lib/blog/tags";
 
 export const metadata = {
   title: "Tech Insights & Resources | L4RG Digital Plus LLC",
@@ -76,45 +77,9 @@ export default async function BlogIndexPage({
 }) {
   const resolvedSearchParams = await searchParams;
   const posts = sortPostsByDateDescending(allPosts);
-  // Ensure required/default tags are available even if not yet used by any post
-  const defaultTags = [
-    "Appointment Setting",
-    "IT Support",
-    "Sales Development",
-    "Go-To-Market",
-    "Data Solutions",
-    "Industries",
-    "Google PPC",
-    "Bing Ads",
-    "Social Media Marketing",
-    "Digital Marketing",
-    "Web Development",
-    "App Development",
-    // Services from header → Services menu
-    "Tech Support Services",
-    "LinkedIn Marketing Services",
-    "Facebook Marketing Services",
-    "Instagram Marketing Services",
-    "Tiktok Marketing",
-    "Snapchat Marketing",
-    "Twitter Marketing",
-    "Pinterest Marketing",
-    "Reddit Marketing",
-    "Web Development Services",
-    "App Development Services",
-  ];
-  const allTags = Array.from(
-    new Set([...posts.flatMap((post) => post.tags), ...defaultTags])
-  ).sort();
-  const rawTagParam = Array.isArray(resolvedSearchParams?.tags)
-    ? resolvedSearchParams?.tags.join(",")
-    : (resolvedSearchParams?.tags as string | undefined);
-  const selectedTags = (rawTagParam?.split(",").filter(Boolean) || []).filter(
-    (t) => allTags.includes(t)
-  );
-  const filteredPosts = selectedTags.length
-    ? posts.filter((post) => selectedTags.every((t) => post.tags.includes(t)))
-    : posts;
+  const allTags = getAllTags(posts);
+  // Blog index now shows all posts; tag selection navigates to /tag/[slug]
+  const filteredPosts = posts;
   const regularPosts = filteredPosts.filter((post) => !post.featured);
 
   return (
@@ -140,53 +105,23 @@ export default async function BlogIndexPage({
           role="listbox"
           aria-label="Tags"
         >
-          {allTags.map((tag) => {
-            const isSelected = selectedTags.includes(tag);
-            const nextSelected = isSelected
-              ? selectedTags.filter((t) => t !== tag)
-              : [...selectedTags, tag];
-            const href =
-              nextSelected.length > 0
-                ? `/blog?tags=${encodeURIComponent(nextSelected.join(","))}`
-                : "/blog";
-            return (
-              <Link
-                key={tag}
-                href={href}
-                scroll={false}
-                aria-pressed={isSelected}
-                aria-label={`Filter by ${tag}${isSelected ? ", selected" : ""}`}
-              >
-                <Badge
-                  variant={isSelected ? "default" : "outline"}
-                  className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                >
-                  {tag}
-                </Badge>
-              </Link>
-            );
-          })}
-          {selectedTags.length > 0 && (
+          {allTags.map((tag) => (
             <Link
-              href="/blog"
+              key={tag}
+              href={`/tag/${slugifyTag(tag)}`}
               scroll={false}
-              className="ml-1"
-              aria-label="Clear selected tag filters"
+              aria-label={`View posts tagged ${tag}`}
             >
               <Badge
-                variant="secondary"
+                variant="outline"
                 className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
-                Clear filters
+                {tag}
               </Badge>
             </Link>
-          )}
+          ))}
         </div>
-        {selectedTags.length > 0 && (
-          <p className="mt-2 text-xs text-muted-foreground" aria-live="polite">
-            Selected: {selectedTags.join(", ")}
-          </p>
-        )}
+        {/* No selected tags on index; selection navigates to /tag/[slug] */}
       </section>
 
       {/* Regular Posts */}
