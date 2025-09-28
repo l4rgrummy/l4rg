@@ -180,7 +180,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Blog listing and tags
   const tagRoutes: MetadataRoute.Sitemap = getAllTags(posts).map((t) => ({
-    url: `${siteUrl}/tag/${slugifyTag(t)}`,
+    url: `${siteUrl}/category/${slugifyTag(t)}`,
     lastModified: now,
     changeFrequency: "weekly",
     priority: 0.4,
