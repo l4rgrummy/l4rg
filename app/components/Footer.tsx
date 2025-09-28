@@ -65,7 +65,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-300">
               <li>
                 <Link
-                  href="/podcast"
+                  href="/resources/podcast"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   Podcast
@@ -73,7 +73,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/blog"
+                  href="/resources/blog"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   Blog
@@ -81,7 +81,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/ciencepedia"
+                  href="/resources/ciencepedia"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   CIENCEpedia
@@ -89,7 +89,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/press-releases"
+                  href="/resources/press-releases"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   Press Releases
@@ -97,10 +97,51 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/ebooks"
+                  href="/resources/ebooks"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   Ebooks
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Explore Section */}
+          <div>
+            <h3 className="font-bold text-xl mb-6 text-black tracking-tight">
+              Explore
+            </h3>
+            <ul className="space-y-3 text-sm text-slate-300">
+              <li>
+                <Link
+                  href="/sales-development"
+                  className="hover:text-white transition-colors duration-200 font-medium"
+                >
+                  Sales Development
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/go-to-market"
+                  className="hover:text-white transition-colors duration-200 font-medium"
+                >
+                  Go-To-Market
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/data-solutions"
+                  className="hover:text-white transition-colors duration-200 font-medium"
+                >
+                  Data Solutions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/industries"
+                  className="hover:text-white transition-colors duration-200 font-medium"
+                >
+                  Industries
                 </Link>
               </li>
             </ul>
@@ -114,7 +155,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-300">
               <li>
                 <Link
-                  href="/product-videos"
+                  href="/resources/product-videos"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   Product Videos
@@ -122,7 +163,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/news"
+                  href="/resources/news-updates"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   News and Updates
@@ -130,7 +171,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/case-studies"
+                  href="/resources/case-studies"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   Case Studies
@@ -138,7 +179,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/meeting"
+                  href="/#contact"
                   className="hover:text-white transition-colors duration-200 font-medium"
                 >
                   Book A Meeting
