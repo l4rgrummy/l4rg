@@ -254,18 +254,6 @@ export default function Footer() {
               >
                 Real Estate Leads
               </Link>
-              <Link
-                href="/pdf-accessibility"
-                className="hover:text-white transition-colors duration-200 font-medium"
-              >
-                PDF Accessibility
-              </Link>
-              <Link
-                href="/flat-in-noida"
-                className="hover:text-white transition-colors duration-200 font-medium"
-              >
-                Flat in Noida
-              </Link>
             </div>
             <div className="text-sm text-black font-medium">
               © {new Date().getFullYear()} L4RG US LLC. All rights reserved.
