@@ -156,6 +156,7 @@ export const metadata: Metadata = {
     "msapplication-TileImage":
       "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-ms-icon-144x144.webp",
     copyright: "© 2024 L4RG Digital Plus LLC",
+    "yandex-verification": "9a34e9c6b80df7f9",
   },
 };
 
@@ -189,6 +190,27 @@ export default function RootLayout({
               s1.setAttribute('crossorigin','*');
               s0.parentNode.insertBefore(s1,s0);
             })();
+          `}
+      </Script>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-SKPNZNVJZQ"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-SKPNZNVJZQ');
+          `}
+      </Script>
+      <Script id="ms-clarity" strategy="afterInteractive">
+        {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "thpl9blm7g");
           `}
       </Script>
     </html>
