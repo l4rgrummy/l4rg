@@ -97,19 +97,19 @@ export default async function BlogIndexPage({
       {/* Tag Filters */}
       <section className="mb-8" aria-labelledby="tag-filters-heading">
         <h2 id="tag-filters-heading" className="sr-only">
-          Filter by tags
+          Filter by Categories
         </h2>
         <div
           className="flex flex-wrap items-center gap-2"
           role="listbox"
-          aria-label="Tags"
+          aria-label="Categories"
         >
           {allTags.map((tag) => (
             <Link
               key={tag}
-              href={`/tag/${slugifyTag(tag)}`}
+              href={`/category/${slugifyTag(tag)}`}
               scroll={false}
-              aria-label={`View posts tagged ${tag}`}
+              aria-label={`View posts in category ${tag}`}
             >
               <Badge
                 variant="outline"
@@ -120,14 +120,14 @@ export default async function BlogIndexPage({
             </Link>
           ))}
         </div>
-        {/* No selected tags on index; selection navigates to /tag/[slug] */}
+        {/* No selected tags on index; selection navigates to /category/[slug] */}
       </section>
 
       {/* Regular Posts */}
       <section>
         <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
           <span className="w-2 h-2 bg-muted-foreground rounded-full"></span>
-          All Articles
+          All Posts
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {regularPosts.map((post) => (
@@ -189,7 +189,7 @@ export default async function BlogIndexPage({
         </div>
         {filteredPosts.length === 0 && (
           <div className="mt-8 text-center text-sm text-muted-foreground">
-            No articles match the selected tags.
+            No posts match the selected categories.
           </div>
         )}
       </section>

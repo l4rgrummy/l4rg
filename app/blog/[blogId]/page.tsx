@@ -142,8 +142,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 {post.tags.map((t) => (
                   <Link
                     key={t}
-                    href={`/tag/${slugifyTag(t)}`}
-                    aria-label={`View posts tagged ${t}`}
+                    href={`/category/${slugifyTag(t)}`}
+                    aria-label={`View posts in category ${t}`}
                   >
                     <Badge variant="secondary" className="cursor-pointer">
                       {t}
@@ -173,7 +173,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
               {allTags.map((t) => (
                 <Link
                   key={t}
-                  href={`/tag/${slugifyTag(t)}`}
+                  href={`/category/${slugifyTag(t)}`}
                   className="inline-flex"
                   aria-label={`View posts in category ${t}`}
                 >
