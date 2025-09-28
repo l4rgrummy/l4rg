@@ -8,6 +8,7 @@ import {
   MobileCallBanner,
 } from "./components";
 import StructuredData from "./components/StructuredData";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,69 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    apple: [
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-57x57.webp",
+        sizes: "57x57",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-60x60.webp",
+        sizes: "60x60",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-72x72.webp",
+        sizes: "72x72",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-76x76.webp",
+        sizes: "76x76",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-114x114.webp",
+        sizes: "114x114",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-120x120.webp",
+        sizes: "120x120",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-144x144.webp",
+        sizes: "144x144",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-152x152.webp",
+        sizes: "152x152",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-apple-icon-180x180.webp",
+        sizes: "180x180",
+      },
+    ],
+    icon: [
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-android-icon-192x192.webp",
+        type: "image/webp",
+        sizes: "192x192",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-favicon-32x32.webp",
+        type: "image/webp",
+        sizes: "32x32",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-favicon-96x96.webp",
+        type: "image/webp",
+        sizes: "96x96",
+      },
+      {
+        url: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-favicon-16x16.webp",
+        type: "image/webp",
+        sizes: "16x16",
+      },
+    ],
+  },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -89,6 +153,8 @@ export const metadata: Metadata = {
   other: {
     "theme-color": "#ffffff",
     "msapplication-TileColor": "#ffffff",
+    "msapplication-TileImage":
+      "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-ms-icon-144x144.webp",
     copyright: "© 2024 L4RG Digital Plus LLC",
   },
 };
@@ -112,6 +178,19 @@ export default function RootLayout({
         <MobileCallBanner />
         <StructuredData />
       </body>
+      <Script id="tawk-to" strategy="afterInteractive">
+        {`
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+              s1.async=true;
+              s1.src='https://embed.tawk.to/68d0dc2979251e1928fac1ce/1j5nto18h';
+              s1.charset='UTF-8';
+              s1.setAttribute('crossorigin','*');
+              s0.parentNode.insertBefore(s1,s0);
+            })();
+          `}
+      </Script>
     </html>
   );
 }
