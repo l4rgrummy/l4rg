@@ -1,12 +1,66 @@
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = "https://l4rgdigitalplus.com";
+  const sitemap = "https://www.l4rgdigitalplus.com/sitemap.xml";
+
+  const userAgents = [
+    "Googlebot",
+    "Googlebot-Image",
+    "Googlebot-News",
+    "Bingbot",
+    "Slurp",
+    "DuckDuckBot",
+    "Baiduspider",
+    "YandexBot",
+    "Sogou",
+    "Exabot",
+    "Teoma",
+    "Aolbot",
+    "Applebot",
+    "ecosia-bot",
+    "Ask Jeeves/Teoma",
+    "NaverBot",
+    "SeznamBot",
+    "360Spider",
+    "Daumoa",
+    "swisscows",
+    "Qwantify",
+    "Facebot",
+    "LinkedInBot",
+    "Twitterbot",
+    "GPTBot",
+    "ChatGPT-User",
+    "OpenAI-Python",
+    "ClaudeBot",
+    "PerplexityBot",
+    "CCBot",
+    "Meta-ExternalAgent",
+    "HuggingChat",
+    "GrokBot",
+    "CopilotBot",
+    "CodeWhispererBot",
+    "JasperBot",
+    "ChatsonicBot",
+    "GeminiBot",
+    "BardBot",
+    "PiBot",
+    "PoeBot",
+    "TabnineBot",
+    "ElicitBot",
+    "ContentShakeBot",
+    "YouBot",
+    "DeepSeek",
+    "CharacterAI",
+    "Writesonic",
+    "AiToolsForEverydayTasks",
+    "BlackboxBot",
+  ];
+
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: `${base}/sitemap.xml`,
+    rules: [
+      { userAgent: "*", allow: "/" },
+      ...userAgents.map((ua) => ({ userAgent: ua, allow: "/" })),
+    ],
+    sitemap,
   };
 }

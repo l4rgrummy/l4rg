@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { posts } from "@/lib/blog/posts";
 import { getAllTags, slugifyTag } from "@/lib/blog/tags";
 
-const siteUrl = "https://l4rgdigitalplus.com";
+const siteUrl = "https://www.l4rgdigitalplus.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
