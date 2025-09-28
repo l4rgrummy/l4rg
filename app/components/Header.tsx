@@ -1,6 +1,7 @@
 "use client";
 import type React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -119,8 +120,13 @@ export default function Header() {
           aria-label="L4RG Home"
           className="brand flex items-center gap-2 font-black text-slate-900"
         >
-          <span className="w-8 h-8 rounded-md bg-indigo-600 inline-block"></span>
-          <div className="font-extrabold">L4RG</div>
+          <Image
+            src="https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-logo.webp"
+            alt="L4RG Digital Plus logo"
+            width={120}
+            height={32}
+            priority
+          />
         </Link>
 
         <nav

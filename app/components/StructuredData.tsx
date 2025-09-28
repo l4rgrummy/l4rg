@@ -2,19 +2,19 @@ export default function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "L4RG US LLC",
-    url: "https://www.example.com/",
-    logo: "https://www.example.com/logo.png",
+    name: "L4RG Digital Plus LLC",
+    url: "https://l4rgdigitalplus.com/",
+    logo: "https://d3euc6irt3la1j.cloudfront.net/l4rg-digital-plus-logo.webp",
     sameAs: [
-      "https://www.linkedin.com/company/example",
-      "https://twitter.com/example",
+      "https://www.linkedin.com/company/l4rg-digital-plus-llc",
+      "https://x.com/sureshdas1978",
     ],
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        email: "sales@example.com",
-        telephone: "+1-555-123-4567",
+        email: "info@l4rgdigitalplus.com",
+        telephone: "+1-929-307-7663",
       },
     ],
   };
