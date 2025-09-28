@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   ContactSection,
   FAQSection,
@@ -89,19 +90,19 @@ export default function HomePage() {
           <ul>
             {/* Section indexes */}
             <li>
-              <a href="/sales-development">Sales Development</a>
+              <Link href="/sales-development">Sales Development</Link>
             </li>
             <li>
-              <a href="/go-to-market">Go-To-Market</a>
+              <Link href="/go-to-market">Go-To-Market</Link>
             </li>
             <li>
-              <a href="/data-solutions">Data Solutions</a>
+              <Link href="/data-solutions">Data Solutions</Link>
             </li>
             <li>
-              <a href="/industries">Industries</a>
+              <Link href="/industries">Industries</Link>
             </li>
             <li>
-              <a href="/resources/blog">Blog</a>
+              <Link href="/resources/blog">Blog</Link>
             </li>
             {/* Sales Development children */}
             {[
@@ -119,7 +120,7 @@ export default function HomePage() {
               "b2b-sales-training",
             ].map((slug) => (
               <li key={`sd-${slug}`}>
-                <a href={`/sales-development/${slug}`}>{slug}</a>
+                <Link href={`/sales-development/${slug}`}>{slug}</Link>
               </li>
             ))}
             {/* Services slugs */}
@@ -139,7 +140,7 @@ export default function HomePage() {
               "app-development-services-in-usa",
             ].map((slug) => (
               <li key={`svc-${slug}`}>
-                <a href={`/${slug}`}>{slug}</a>
+                <Link href={`/${slug}`}>{slug}</Link>
               </li>
             ))}
             {/* Go-To-Market children */}
@@ -154,7 +155,7 @@ export default function HomePage() {
               "sales-outsourcing",
             ].map((slug) => (
               <li key={`gtm-${slug}`}>
-                <a href={`/go-to-market/${slug}`}>{slug}</a>
+                <Link href={`/go-to-market/${slug}`}>{slug}</Link>
               </li>
             ))}
             {/* Data Solutions children */}
@@ -167,7 +168,7 @@ export default function HomePage() {
               "inbound-lead-generation",
             ].map((slug) => (
               <li key={`ds-${slug}`}>
-                <a href={`/data-solutions/${slug}`}>{slug}</a>
+                <Link href={`/data-solutions/${slug}`}>{slug}</Link>
               </li>
             ))}
             {/* Industries children */}
@@ -192,7 +193,7 @@ export default function HomePage() {
               "data-centers",
             ].map((slug) => (
               <li key={`ind-${slug}`}>
-                <a href={`/industries/${slug}`}>{slug}</a>
+                <Link href={`/industries/${slug}`}>{slug}</Link>
               </li>
             ))}
           </ul>

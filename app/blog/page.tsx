@@ -75,7 +75,6 @@ export default async function BlogIndexPage({
 }: {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const resolvedSearchParams = await searchParams;
   const posts = sortPostsByDateDescending(allPosts);
   const allTags = getAllTags(posts);
   // Blog index now shows all posts; tag selection navigates to /tag/[slug]
